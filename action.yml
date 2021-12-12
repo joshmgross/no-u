@@ -2,10 +2,9 @@ name: 'Your name here'
 description: 'Provide a description here'
 author: 'Your name or organization here'
 inputs:
-  my-input:
-    required: false
-    description: 'a great description of your input'
-    default: 'a suitable default value'
+  token:
+    description: A token to the repository to manage issues and pull erquests.
+    default: ${{ github.token }}
 runs:
   using: 'node12'
   main: 'dist/index.js'

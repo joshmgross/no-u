@@ -1,15 +1,26 @@
 import * as core from "@actions/core";
-
-import * as utils from "./utils";
+import * as github from "@actions/github";
 
 async function run(): Promise<void> {
     try {
-        // Inputs and validation
-        const myInput = core.getInput("my-input");
+        const token = core.getInput("token", { required: true });
 
-        utils.logInfo(`The specified input is ${myInput}`);
+        const context = github.context;
+        const octokit = github.getOctokit(token);
 
-        utils.logInfo("🎉🎈🎊 Action complete 🎉🎈🎊");
+        await octokit.rest.issues.createComment({
+            ...context.repo,
+            issue_number: context.issue.number,
+            body: "no u"
+        });
+
+        await octokit.rest.issues.update({
+            ...context.repo,
+            issue_number: context.issue.number,
+            state: "closed"
+        });
+
+        core.info("no u");
     } catch (error) {
         core.setFailed(`❌ Action failed with error: ${error}`);
     }
