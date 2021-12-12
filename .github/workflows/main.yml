@@ -1,6 +1,6 @@
 name: 🧪
 
-on: [issues, pull_requests]
+on: [issues, pull_request]
 
 jobs:
   main:
