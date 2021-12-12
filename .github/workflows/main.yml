@@ -1,18 +1,14 @@
 name: 🧪
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [issues, pull_requests]
 
 jobs:
   main:
     runs-on: ubuntu-latest
+    permissions:
+      issues: write
 
     steps:
     - uses: actions/checkout@v2
     - name: Run Action
       uses: ./
-      with:
-        my-input: 'hello world'

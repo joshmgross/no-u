@@ -8,6 +8,11 @@ async function run(): Promise<void> {
         const context = github.context;
         const octokit = github.getOctokit(token);
 
+        if (!context.eventName.startsWith("pull_request") || !context.eventName.startsWith("issue")) {
+            core.error("no u");
+            return;
+        }
+
         await octokit.rest.issues.createComment({
             ...context.repo,
             issue_number: context.issue.number,
