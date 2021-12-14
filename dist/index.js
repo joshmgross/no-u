@@ -8306,7 +8306,7 @@ async function run() {
         const context = github.context;
         const octokit = github.getOctokit(token);
         core.debug(`Event: ${context.eventName}`);
-        if (!context.eventName.startsWith("pull_request") || !context.eventName.startsWith("issue")) {
+        if (!context.eventName.startsWith("pull_request") && !context.eventName.startsWith("issue")) {
             core.error("no u");
             return;
         }
