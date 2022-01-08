@@ -8,9 +8,10 @@
     "build": "tsc",
     "pack": "ncc build src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint **/*.ts --cache",
     "format": "prettier --write **/*.ts",
     "format-check": "prettier --check **/*.ts",
-    "all": "npm run build && npm run format && npm run pack"
+    "all": "npm run build && npm run format && npm run lint && npm run pack"
   },
   "repository": {
     "type": "git",
